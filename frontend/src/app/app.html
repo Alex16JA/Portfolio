@@ -9,6 +9,31 @@
     <app-hero name="Alexandre PHAM" title="Étudiant en BUT 3 Informatique"
       description="Passionné par le développement web et les technologies modernes. Spécialisé en Angular et Flask, je cherche à créer des applications performantes et élégantes." />
 
+    <!-- Loading State -->
+    @if (isLoading()) {
+    <div class="loading-section">
+      <div class="loading-spinner">
+        <div class="spinner-ring"></div>
+        <div class="spinner-ring"></div>
+        <div class="spinner-ring"></div>
+      </div>
+      <p class="loading-text">Chargement des projets GitHub...</p>
+    </div>
+    }
+
+    <!-- Error State -->
+    @if (error()) {
+    <div class="error-banner">
+      <div class="error-content">
+        <span class="error-icon">⚠️</span>
+        <p class="error-message">{{ error() }}</p>
+        <button class="error-retry" (click)="retryLoad()">
+          Réessayer
+        </button>
+      </div>
+    </div>
+    }
+
     <!-- Projects Section -->
     <app-projects [projects]="projects()" />
 

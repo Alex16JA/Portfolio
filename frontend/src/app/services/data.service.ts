@@ -1,10 +1,11 @@
 /**
  * DataService - Service de données pour le Portfolio
- * Version STATIQUE - Pas besoin de backend !
+ * Utilise l'API GitHub pour les projets en temps réel !
  */
 
-import { Injectable, signal, computed } from '@angular/core';
-import { PROJECTS, SKILLS, TIMELINE } from '../data/portfolio-data';
+import { Injectable, inject, signal, computed } from '@angular/core';
+import { GitHubService } from './github.service';
+import { SKILLS, TIMELINE } from '../data/portfolio-data';
 
 // ============================================================================
 // Interfaces TypeScript
@@ -17,6 +18,8 @@ export interface Project {
     tags: string[];
     lien_github: string;
     image_placeholder: string;
+    stars?: number;
+    updated_at?: string;
 }
 
 export interface Skill {
@@ -33,25 +36,27 @@ export interface TimelineEvent {
 }
 
 // ============================================================================
-// DataService avec Signals (données statiques)
+// DataService avec GitHub API
 // ============================================================================
 
 @Injectable({
     providedIn: 'root'
 })
 export class DataService {
+    private readonly githubService = inject(GitHubService);
+
     // -------------------------------------------------------------------------
-    // Signals avec données statiques directement
+    // Signals
     // -------------------------------------------------------------------------
 
-    private readonly _projects = signal<Project[]>(PROJECTS);
+    private readonly _projects = signal<Project[]>([]);
     private readonly _skills = signal<Skill[]>(SKILLS);
     private readonly _timeline = signal<TimelineEvent[]>(TIMELINE);
     private readonly _isLoading = signal<boolean>(false);
     private readonly _error = signal<string | null>(null);
 
     // -------------------------------------------------------------------------
-    // Signaux publics en lecture seule
+    // Signaux publics
     // -------------------------------------------------------------------------
 
     readonly projects = this._projects.asReadonly();
@@ -89,26 +94,35 @@ export class DataService {
         });
     });
 
-    readonly hasData = computed(() =>
-        this._projects().length > 0 ||
-        this._skills().length > 0 ||
-        this._timeline().length > 0
-    );
+    readonly hasData = computed(() => this._projects().length > 0);
 
     // -------------------------------------------------------------------------
-    // Méthodes publiques (gardées pour compatibilité)
+    // Méthodes publiques
     // -------------------------------------------------------------------------
 
-    /** Plus besoin de fetch - les données sont déjà là ! */
-    loadData(): void {
-        // Les données sont déjà chargées via les signaux
-        console.log('✅ Portfolio data loaded (static)');
+    /**
+     * Charge les projets depuis l'API GitHub
+     */
+    fetchProjects(): void {
+        this._isLoading.set(true);
+        this._error.set(null);
+
+        this.githubService.fetchProjects().subscribe({
+            next: (projects) => {
+                this._projects.set(projects);
+                this._isLoading.set(false);
+                console.log(`✅ ${projects.length} projets GitHub chargés !`);
+            },
+            error: (err) => {
+                this._error.set('Impossible de charger les projets GitHub.');
+                this._isLoading.set(false);
+                console.error('❌ Erreur:', err);
+            }
+        });
     }
 
     resetData(): void {
         this._projects.set([]);
-        this._skills.set([]);
-        this._timeline.set([]);
         this._error.set(null);
     }
 }
