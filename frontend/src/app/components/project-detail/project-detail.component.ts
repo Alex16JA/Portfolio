@@ -1,12 +1,12 @@
 import { Component, inject, signal, computed, OnInit } from '@angular/core';
-import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { DataService, Project } from '../../services/data.service';
 import { PROJECT_DETAILS, ProjectDetail } from '../../data/portfolio-data';
 
 @Component({
     selector: 'app-project-detail',
     standalone: true,
-    imports: [RouterLink],
+    imports: [],
     templateUrl: './project-detail.component.html',
     styleUrl: './project-detail.component.css'
 })
