@@ -1,5 +1,5 @@
 /* ============================================
-   ⚡ SKILLS SECTION - Progress Bars
+   ⚡ SKILLS SECTION - Badge Grid with Icons
    ============================================ */
 
 .skills-section {
@@ -97,124 +97,60 @@
     border-bottom: 1px solid var(--color-border);
 }
 
-/* Skills Grid */
+/* Skills Grid - Badge Layout */
 .skills-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    display: flex;
+    flex-wrap: wrap;
     gap: var(--spacing-md);
 }
 
-/* Skill Card */
-.skill-card {
+/* Skill Badge */
+.skill-badge {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-sm) var(--spacing-lg);
     background-color: var(--color-secondary);
     border: 1px solid var(--color-border);
     border-radius: var(--radius-lg);
-    padding: var(--spacing-md);
+    cursor: default;
     transition:
         border-color var(--transition-fast),
-        transform var(--transition-fast);
+        transform var(--transition-fast),
+        box-shadow var(--transition-fast);
 }
 
-.skill-card:hover {
+.skill-badge:hover {
     border-color: var(--color-accent);
-    transform: translateY(-2px);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(139, 92, 246, 0.15);
 }
 
-.skill-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: var(--spacing-sm);
+.skill-icon {
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
 }
 
 .skill-name {
     font-size: var(--font-size-base);
     font-weight: var(--font-weight-medium);
     color: var(--color-text-primary);
-}
-
-.skill-level {
-    font-size: var(--font-size-sm);
-    color: var(--color-accent);
-    font-weight: var(--font-weight-semibold);
-}
-
-/* Skill Progress Bar */
-.skill-bar {
-    height: 8px;
-    background-color: var(--color-border);
-    border-radius: var(--radius-full);
-    overflow: hidden;
-}
-
-.skill-progress {
-    height: 100%;
-    background: linear-gradient(90deg, var(--color-accent), var(--color-accent-hover));
-    border-radius: var(--radius-full);
-    transition: width 0.8s ease-out;
-    position: relative;
-}
-
-.skill-progress::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(90deg,
-            transparent 0%,
-            rgba(255, 255, 255, 0.2) 50%,
-            transparent 100%);
-    animation: shimmerBar 2s infinite;
-}
-
-@keyframes shimmerBar {
-    0% {
-        transform: translateX(-100%);
-    }
-
-    100% {
-        transform: translateX(100%);
-    }
+    white-space: nowrap;
 }
 
 /* Loading State */
 .loading-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    display: flex;
+    flex-wrap: wrap;
     gap: var(--spacing-md);
 }
 
-.loading-card {
-    background-color: var(--color-secondary);
-    border: 1px solid var(--color-border);
+.loading-badge {
+    width: 140px;
+    height: 48px;
     border-radius: var(--radius-lg);
-    padding: var(--spacing-md);
-}
-
-.loading-header {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: var(--spacing-sm);
-}
-
-.loading-name {
-    height: 20px;
-    width: 60%;
-    border-radius: var(--radius-md);
-}
-
-.loading-level {
-    height: 20px;
-    width: 40px;
-    border-radius: var(--radius-md);
-}
-
-.loading-bar {
-    height: 8px;
-    width: 100%;
-    border-radius: var(--radius-full);
 }
 
 /* Skeleton animation */
@@ -240,7 +176,7 @@
 /* Responsive */
 @media (max-width: 768px) {
     .skills-grid {
-        grid-template-columns: 1fr;
+        justify-content: center;
     }
 
     .section-title {
@@ -256,5 +192,18 @@
         width: 100%;
         max-width: 200px;
         text-align: center;
+    }
+
+    .skill-badge {
+        padding: var(--spacing-xs) var(--spacing-md);
+    }
+
+    .skill-icon {
+        width: 24px;
+        height: 24px;
+    }
+
+    .skill-name {
+        font-size: var(--font-size-sm);
     }
 }

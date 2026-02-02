@@ -1,0 +1,89 @@
+<!-- 🎨 Portfolio One-Page - Alexandre PHAM -->
+<div class="app-container">
+    <!-- Navigation -->
+    <app-navbar />
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Hero Section -->
+        <app-hero name="Alexandre PHAM" title="Étudiant en BUT 3 Informatique"
+            description="Passionné par le développement web et les technologies modernes. Spécialisé en Angular et Flask, je cherche à créer des applications performantes et élégantes." />
+
+        <!-- Loading State -->
+        @if (isLoading()) {
+        <div class="loading-section">
+            <div class="loading-spinner">
+                <div class="spinner-ring"></div>
+                <div class="spinner-ring"></div>
+                <div class="spinner-ring"></div>
+            </div>
+            <p class="loading-text">Chargement des projets GitHub...</p>
+        </div>
+        }
+
+        <!-- Error State -->
+        @if (error()) {
+        <div class="error-banner">
+            <div class="error-content">
+                <span class="error-icon">⚠️</span>
+                <p class="error-message">{{ error() }}</p>
+                <button class="error-retry" (click)="retryLoad()">
+                    Réessayer
+                </button>
+            </div>
+        </div>
+        }
+
+        <!-- Projects Section -->
+        <app-projects [projects]="projects()" />
+
+        <!-- Skills Section -->
+        <app-skills [skills]="skills()" />
+
+        <!-- Timeline Section -->
+        <app-timeline [events]="timeline()" />
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact-section">
+            <div class="section-container">
+                <div class="section-header">
+                    <span class="section-tag">📬 Contact</span>
+                    <h2 class="section-title">Me Contacter</h2>
+                    <p class="section-description">
+                        Intéressé par mon profil ? N'hésitez pas à me contacter !
+                    </p>
+                </div>
+
+                <div class="contact-content">
+                    <div class="contact-links">
+                        <a href="mailto:alexandre.pham@example.com" class="contact-link">
+                            <span class="contact-icon">📧</span>
+                            <span>alexandre.pham@example.com</span>
+                        </a>
+                        <a href="https://github.com/Alex16JA" target="_blank" rel="noopener noreferrer"
+                            class="contact-link">
+                            <span class="contact-icon">💻</span>
+                            <span>github.com/Alex16JA</span>
+                        </a>
+                        <a href="https://linkedin.com/in/alexandre-pham" target="_blank" rel="noopener noreferrer"
+                            class="contact-link">
+                            <span class="contact-icon">🔗</span>
+                            <span>linkedin.com/in/alexandre-pham</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <p class="footer-text">
+                © 2026 Alexandre PHAM. Développé avec
+                <span class="footer-heart">💜</span>
+                en Angular 20
+            </p>
+        </div>
+    </footer>
+</div>

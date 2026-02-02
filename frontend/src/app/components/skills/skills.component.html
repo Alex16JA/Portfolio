@@ -29,14 +29,11 @@
             <h3 class="category-title">{{ entry.key }}</h3>
             <div class="skills-grid">
                 @for (skill of entry.value; track skill.nom) {
-                <div class="skill-card">
-                    <div class="skill-header">
-                        <span class="skill-name">{{ skill.nom }}</span>
-                        <span class="skill-level">{{ skill.niveau }}/10</span>
-                    </div>
-                    <div class="skill-bar">
-                        <div class="skill-progress" [style.width.%]="skill.niveau * 10"></div>
-                    </div>
+                <div class="skill-badge">
+                    @if (skill.icon) {
+                    <img [src]="skill.icon" [alt]="skill.nom" class="skill-icon" loading="lazy" />
+                    }
+                    <span class="skill-name">{{ skill.nom }}</span>
                 </div>
                 }
             </div>
@@ -47,13 +44,7 @@
         <div class="skills-loading">
             <div class="loading-grid">
                 @for (i of [1, 2, 3, 4, 5, 6]; track i) {
-                <div class="loading-card">
-                    <div class="loading-header">
-                        <div class="loading-name skeleton"></div>
-                        <div class="loading-level skeleton"></div>
-                    </div>
-                    <div class="loading-bar skeleton"></div>
-                </div>
+                <div class="loading-badge skeleton"></div>
                 }
             </div>
         </div>

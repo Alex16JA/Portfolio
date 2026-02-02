@@ -24,8 +24,9 @@ export interface Project {
 
 export interface Skill {
     nom: string;
-    niveau: number;
+    niveau?: number;
     categorie: string;
+    icon?: string;
 }
 
 export interface TimelineEvent {

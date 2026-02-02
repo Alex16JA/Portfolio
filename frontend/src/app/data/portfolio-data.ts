@@ -11,36 +11,36 @@ import { Skill, TimelineEvent } from '../services/data.service';
 
 export const SKILLS: Skill[] = [
     // Langages de programmation
-    { nom: "Java", niveau: 8, categorie: "Langages" },
-    { nom: "Python", niveau: 8, categorie: "Langages" },
-    { nom: "C", niveau: 7, categorie: "Langages" },
-    { nom: "TypeScript", niveau: 8, categorie: "Langages" },
-    { nom: "PHP", niveau: 6, categorie: "Langages" },
-    { nom: "Shell", niveau: 7, categorie: "Langages" },
+    { nom: "Java", categorie: "Langages", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" },
+    { nom: "Python", categorie: "Langages", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" },
+    { nom: "C", categorie: "Langages", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg" },
+    { nom: "TypeScript", categorie: "Langages", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" },
+    { nom: "PHP", categorie: "Langages", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" },
+    { nom: "Shell", categorie: "Langages", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bash/bash-original.svg" },
 
     // Frameworks
-    { nom: "Angular", niveau: 9, categorie: "Frontend" },
-    { nom: "Flask", niveau: 8, categorie: "Backend" },
-    { nom: "JUnit", niveau: 7, categorie: "Backend" },
+    { nom: "Angular", categorie: "Frontend", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angular/angular-original.svg" },
+    { nom: "Flask", categorie: "Backend", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flask/flask-original.svg" },
+    { nom: "JUnit", categorie: "Backend", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/junit/junit-original.svg" },
 
     // Bases de données
-    { nom: "PostgreSQL", niveau: 8, categorie: "Base de données" },
-    { nom: "MySQL", niveau: 8, categorie: "Base de données" },
-    { nom: "MongoDB", niveau: 7, categorie: "Base de données" },
+    { nom: "PostgreSQL", categorie: "Base de données", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" },
+    { nom: "MySQL", categorie: "Base de données", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" },
+    { nom: "MongoDB", categorie: "Base de données", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" },
 
     // DevOps & Outils
-    { nom: "Docker", niveau: 8, categorie: "DevOps" },
-    { nom: "Git/GitHub", niveau: 9, categorie: "DevOps" },
-    { nom: "Linux (Ubuntu)", niveau: 8, categorie: "DevOps" },
+    { nom: "Docker", categorie: "DevOps", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" },
+    { nom: "Git/GitHub", categorie: "DevOps", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" },
+    { nom: "Linux (Ubuntu)", categorie: "DevOps", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ubuntu/ubuntu-original.svg" },
 
     // Outils de conception
-    { nom: "VSCode", niveau: 9, categorie: "Outils" },
-    { nom: "Figma", niveau: 7, categorie: "Outils" },
-    { nom: "Canva", niveau: 7, categorie: "Outils" },
-    { nom: "Trello", niveau: 8, categorie: "Outils" },
+    { nom: "VSCode", categorie: "Outils", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" },
+    { nom: "Figma", categorie: "Outils", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" },
+    { nom: "Canva", categorie: "Outils", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/canva/canva-original.svg" },
+    { nom: "Trello", categorie: "Outils", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/trello/trello-original.svg" },
 
     // Méthodologies
-    { nom: "Agile/Scrum", niveau: 8, categorie: "Méthodologies" },
+    { nom: "Agile/Scrum", categorie: "Méthodologies", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jira/jira-original.svg" },
 ];
 
 // ============================================================================
@@ -73,3 +73,43 @@ export const TIMELINE: TimelineEvent[] = [
         description: "Baccalauréat avec spécialités Mathématiques et NSI."
     },
 ];
+
+// ============================================================================
+// DÉTAILS DES PROJETS (pour les pages dédiées)
+// ============================================================================
+
+export interface TechStack {
+    name: string;
+    icon?: string;
+}
+
+export interface ProjectDetail {
+    description: string;
+    screenshots?: string[];
+    stack?: TechStack[];
+    bilan?: string;
+}
+
+/**
+ * Map des détails de projets, indexée par ID GitHub
+ * Tu peux ajouter des détails pour chaque projet ici
+ */
+export const PROJECT_DETAILS: Record<number, ProjectDetail> = {
+    // Exemple de structure - à remplir avec tes vrais projets
+    // L'ID correspond à l'ID GitHub du repo
+    /*
+    123456789: {
+        description: "Description détaillée du projet...",
+        screenshots: [
+            "/assets/screenshots/projet1-home.png",
+            "/assets/screenshots/projet1-dashboard.png"
+        ],
+        stack: [
+            { name: "Angular", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angular/angular-original.svg" },
+            { name: "TypeScript", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" },
+        ],
+        bilan: "Ce projet m'a permis d'apprendre..."
+    }
+    */
+};
+

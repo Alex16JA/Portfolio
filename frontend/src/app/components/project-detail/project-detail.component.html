@@ -1,0 +1,119 @@
+<div class="project-detail-page">
+    <!-- Back Button -->
+    <nav class="project-nav">
+        <button class="back-btn" (click)="goBack()">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M19 12H5M12 19l-7-7 7-7" />
+            </svg>
+            <span>Retour</span>
+        </button>
+    </nav>
+
+    @if (isLoading()) {
+    <!-- Loading State -->
+    <div class="loading-container">
+        <div class="loading-spinner">
+            <div class="spinner-ring"></div>
+            <div class="spinner-ring"></div>
+            <div class="spinner-ring"></div>
+        </div>
+        <p class="loading-text">Chargement du projet...</p>
+    </div>
+    } @else if (project()) {
+    <main class="project-content">
+        <!-- Hero Section -->
+        <header class="project-hero">
+            <div class="project-hero-content">
+                <h1 class="project-title">{{ project()!.titre }}</h1>
+                <p class="project-subtitle">{{ project()!.description }}</p>
+
+                <!-- Tags -->
+                <div class="project-tags">
+                    @for (tag of project()!.tags; track tag) {
+                    <span class="project-tag">{{ tag }}</span>
+                    }
+                </div>
+
+                <!-- Actions -->
+                <div class="project-actions">
+                    <button class="action-btn primary" (click)="openLink(project()!.lien_github)">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                            fill="currentColor">
+                            <path
+                                d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                        </svg>
+                        <span>Voir sur GitHub</span>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        @if (projectDetail()) {
+        <!-- Description Section -->
+        <section class="project-section">
+            <h2 class="section-title">📝 À propos du projet</h2>
+            <div class="section-content">
+                <p class="description-text">{{ projectDetail()!.description }}</p>
+            </div>
+        </section>
+
+        <!-- Screenshots Section -->
+        @if (projectDetail()!.screenshots && projectDetail()!.screenshots!.length > 0) {
+        <section class="project-section">
+            <h2 class="section-title">📸 Captures d'écran</h2>
+            <div class="screenshots-grid">
+                @for (screenshot of projectDetail()!.screenshots; track screenshot) {
+                <div class="screenshot-card">
+                    <img [src]="screenshot" alt="Capture d'écran du projet" loading="lazy" />
+                </div>
+                }
+            </div>
+        </section>
+        }
+
+        <!-- Tech Stack Section -->
+        @if (projectDetail()!.stack && projectDetail()!.stack!.length > 0) {
+        <section class="project-section">
+            <h2 class="section-title">🛠️ Technologies utilisées</h2>
+            <div class="stack-grid">
+                @for (tech of projectDetail()!.stack; track tech.name) {
+                <div class="stack-badge">
+                    @if (tech.icon) {
+                    <img [src]="tech.icon" [alt]="tech.name" class="stack-icon" loading="lazy" />
+                    }
+                    <span class="stack-name">{{ tech.name }}</span>
+                </div>
+                }
+            </div>
+        </section>
+        }
+
+        <!-- Summary Section -->
+        @if (projectDetail()!.bilan) {
+        <section class="project-section bilan-section">
+            <h2 class="section-title">💡 Bilan</h2>
+            <div class="bilan-content">
+                <p>{{ projectDetail()!.bilan }}</p>
+            </div>
+        </section>
+        }
+        } @else {
+        <!-- No details available -->
+        <section class="project-section">
+            <div class="no-details">
+                <p>Détails supplémentaires non disponibles pour ce projet.</p>
+                <p class="hint">Consultez le dépôt GitHub pour plus d'informations.</p>
+            </div>
+        </section>
+        }
+    </main>
+    } @else {
+    <!-- Project not found -->
+    <div class="not-found">
+        <h2>Projet introuvable</h2>
+        <p>Le projet demandé n'existe pas ou n'est plus disponible.</p>
+        <button class="action-btn primary" (click)="goBack()">Retour à l'accueil</button>
+    </div>
+    }
+</div>
