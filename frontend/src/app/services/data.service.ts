@@ -1,12 +1,8 @@
-/**
- * DataService - Service de données pour le Portfolio
- * Utilise HttpClient et Signals (Angular 20)
- */
-
 import { Injectable, inject, signal, computed } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { catchError, tap } from 'rxjs/operators';
 import { Observable, throwError, of } from 'rxjs';
+import { environment } from '../../environments/environment';
 
 // ============================================================================
 // Interfaces TypeScript (correspond aux TypedDict du backend)
@@ -49,7 +45,7 @@ export interface PortfolioData {
 })
 export class DataService {
     private readonly http = inject(HttpClient);
-    private readonly API_URL = 'http://localhost:5000/api/data';
+    private readonly API_URL = `${environment.apiUrl}/data`;
 
     // -------------------------------------------------------------------------
     // Writable Signals pour stocker les données

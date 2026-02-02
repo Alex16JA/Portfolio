@@ -22,6 +22,21 @@
     </div>
     }
 
+    <!-- Loading State (Cold Start Handler) -->
+    @if (isLoading()) {
+    <div class="loading-overlay">
+      <div class="loading-container">
+        <div class="loading-spinner">
+          <div class="spinner-ring"></div>
+          <div class="spinner-ring"></div>
+          <div class="spinner-ring"></div>
+        </div>
+        <p class="loading-text">Chargement des données...</p>
+        <p class="loading-subtext">Première connexion, veuillez patienter</p>
+      </div>
+    </div>
+    }
+
     <!-- Projects Section -->
     <app-projects [projects]="projects()" />
 
@@ -44,17 +59,18 @@
 
         <div class="contact-content">
           <div class="contact-links">
-            <a href="mailto:alex.music@example.com" class="contact-link">
+            <a href="mailto:alexandre.pham@example.com" class="contact-link">
               <span class="contact-icon">📧</span>
-              <span>alex.music@example.com</span>
+              <span>alexandre.pham@example.com</span>
             </a>
-            <a href="https://github.com/alex-music" target="_blank" rel="noopener noreferrer" class="contact-link">
+            <a href="https://github.com/Alex16JA" target="_blank" rel="noopener noreferrer" class="contact-link">
               <span class="contact-icon">💻</span>
-              <span>github.com/alex-music</span>
+              <span>github.com/Alex16JA</span>
             </a>
-            <a href="https://linkedin.com/in/alex-music" target="_blank" rel="noopener noreferrer" class="contact-link">
+            <a href="https://linkedin.com/in/alexandre-pham" target="_blank" rel="noopener noreferrer"
+              class="contact-link">
               <span class="contact-icon">🔗</span>
-              <span>linkedin.com/in/alex-music</span>
+              <span>linkedin.com/in/alexandre-pham</span>
             </a>
           </div>
         </div>
@@ -66,7 +82,7 @@
   <footer class="footer">
     <div class="footer-container">
       <p class="footer-text">
-        © 2026 Alex Music. Développé avec
+        © 2026 Alexandre PHAM. Développé avec
         <span class="footer-heart">💜</span>
         en Angular 20
       </p>

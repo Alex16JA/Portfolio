@@ -16,6 +16,9 @@ export class NavbarComponent {
         { label: 'Contact', href: '#contact' }
     ];
 
+    /** Lien vers le CV (téléchargement direct) */
+    readonly cvLink = '/CV_Alexandre_PHAM_2025.pdf';
+
     /** État du scroll pour l'effet de fond */
     isScrolled = signal(false);
 

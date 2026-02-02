@@ -72,6 +72,98 @@
     }
 }
 
+/* ============================================
+   💜 LOADING OVERLAY - Cold Start Handler
+   ============================================ */
+
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(10, 10, 10, 0.95), rgba(20, 15, 35, 0.98));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: var(--z-modal);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.loading-container {
+    text-align: center;
+    animation: fadeIn 0.5s ease-out;
+}
+
+.loading-spinner {
+    position: relative;
+    width: 80px;
+    height: 80px;
+    margin: 0 auto var(--spacing-xl);
+}
+
+.spinner-ring {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 3px solid transparent;
+    border-radius: 50%;
+}
+
+.spinner-ring:nth-child(1) {
+    border-top-color: var(--color-accent);
+    animation: spin 1.2s linear infinite;
+}
+
+.spinner-ring:nth-child(2) {
+    border-right-color: rgba(139, 92, 246, 0.6);
+    animation: spin 1.6s linear infinite reverse;
+}
+
+.spinner-ring:nth-child(3) {
+    border-bottom-color: rgba(167, 139, 250, 0.4);
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.loading-text {
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text-primary);
+    margin: 0 0 var(--spacing-sm);
+    background: linear-gradient(135deg, var(--color-accent), rgba(167, 139, 250, 1));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.loading-subtext {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-muted);
+    margin: 0;
+    opacity: 0.7;
+}
+
 /* Contact Section */
 .contact-section {
     padding: var(--spacing-4xl) 0;

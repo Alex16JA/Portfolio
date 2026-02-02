@@ -89,6 +89,42 @@
     width: 100%;
 }
 
+/* CV Button - Accent Style */
+.cv-btn {
+    background: linear-gradient(135deg, rgba(139, 92, 246, 0.2), rgba(167, 139, 250, 0.1));
+    border: 1px solid rgba(139, 92, 246, 0.4);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-xs) var(--spacing-md) !important;
+    color: var(--color-accent) !important;
+    transition:
+        background var(--transition-fast),
+        border-color var(--transition-fast),
+        transform var(--transition-fast),
+        box-shadow var(--transition-fast);
+}
+
+.cv-btn:hover {
+    background: linear-gradient(135deg, rgba(139, 92, 246, 0.3), rgba(167, 139, 250, 0.2));
+    border-color: var(--color-accent);
+    color: var(--color-text-primary) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 20px rgba(139, 92, 246, 0.3);
+}
+
+.cv-btn::after {
+    display: none;
+}
+
+/* Mobile CV Button */
+.cv-btn-mobile {
+    background: linear-gradient(135deg, rgba(139, 92, 246, 0.2), rgba(167, 139, 250, 0.1));
+    border: 1px solid rgba(139, 92, 246, 0.4);
+    border-radius: var(--radius-lg);
+    text-align: center;
+    color: var(--color-accent) !important;
+    margin-top: var(--spacing-sm);
+}
+
 /* Mobile Menu Button */
 .mobile-menu-btn {
     display: none;
