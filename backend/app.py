@@ -71,8 +71,7 @@ def create_app() -> Flask:
     # Configuration CORS pour Angular (localhost:4200) et Vercel (production)
     CORS(app, origins=[
         "http://localhost:4200",
-        "https://*.vercel.app",
-        "https://your-domain.com"  # Remplacer par ton domaine personnalisé si nécessaire
+        "https://https://aphamportfolio.vercel.app",
     ])
     
     # Configuration de sécurité
