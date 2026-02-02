@@ -1,5 +1,4 @@
 import { Component, OnInit, inject } from '@angular/core';
-import { KeyValuePipe } from '@angular/common';
 
 // Components
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -15,7 +14,6 @@ import { DataService } from './services/data.service';
   selector: 'app-root',
   standalone: true,
   imports: [
-    KeyValuePipe,
     NavbarComponent,
     HeroComponent,
     ProjectsComponent,
