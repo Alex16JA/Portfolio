@@ -38,7 +38,7 @@ class TimelineEvent(TypedDict):
     titre: str
     etablissement: str
     description: str
-    type: str  # "formation" ou "experience"
+    type: str  # "formation", "experience" ou "projet"
 
 
 class PortfolioData(TypedDict):
@@ -156,78 +156,71 @@ def fetch_github_projects() -> list[Project]:
         return []
 
 SKILLS: list[Skill] = [
-    # Langages de programmation
-    {"nom": "Python", "niveau": 9, "categorie": "Langages"},
+    # Langages de programmation (Programmation Logiciel)
     {"nom": "Java", "niveau": 8, "categorie": "Langages"},
+    {"nom": "Python", "niveau": 8, "categorie": "Langages"},
+    {"nom": "C", "niveau": 7, "categorie": "Langages"},
     {"nom": "TypeScript", "niveau": 8, "categorie": "Langages"},
-    {"nom": "JavaScript", "niveau": 8, "categorie": "Langages"},
-    {"nom": "C/C++", "niveau": 6, "categorie": "Langages"},
-    {"nom": "SQL", "niveau": 8, "categorie": "Langages"},
+    {"nom": "PHP", "niveau": 6, "categorie": "Langages"},
+    {"nom": "Shell", "niveau": 7, "categorie": "Langages"},
     
-    # Frameworks & Libraries
-    {"nom": "Angular", "niveau": 8, "categorie": "Frontend"},
-    {"nom": "React", "niveau": 7, "categorie": "Frontend"},
-    {"nom": "Vue.js", "niveau": 6, "categorie": "Frontend"},
-    {"nom": "Flask", "niveau": 9, "categorie": "Backend"},
-    {"nom": "Spring Boot", "niveau": 7, "categorie": "Backend"},
-    {"nom": "Node.js", "niveau": 7, "categorie": "Backend"},
+    # Frameworks
+    {"nom": "Angular", "niveau": 9, "categorie": "Frontend"},
+    {"nom": "Flask", "niveau": 8, "categorie": "Backend"},
+    {"nom": "JUnit", "niveau": 7, "categorie": "Backend"},
     
     # Bases de données
     {"nom": "PostgreSQL", "niveau": 8, "categorie": "Base de données"},
+    {"nom": "MySQL", "niveau": 8, "categorie": "Base de données"},
     {"nom": "MongoDB", "niveau": 7, "categorie": "Base de données"},
-    {"nom": "Redis", "niveau": 6, "categorie": "Base de données"},
     
-    # DevOps & Cloud
+    # DevOps & Outils
     {"nom": "Docker", "niveau": 8, "categorie": "DevOps"},
-    {"nom": "Kubernetes", "niveau": 6, "categorie": "DevOps"},
-    {"nom": "Git", "niveau": 9, "categorie": "DevOps"},
-    {"nom": "Linux", "niveau": 8, "categorie": "DevOps"},
-    {"nom": "AWS", "niveau": 6, "categorie": "Cloud"},
+    {"nom": "Git/GitHub", "niveau": 9, "categorie": "DevOps"},
+    {"nom": "Linux (Ubuntu)", "niveau": 8, "categorie": "DevOps"},
+    
+    # Outils de conception
+    {"nom": "VSCode", "niveau": 9, "categorie": "Outils"},
+    {"nom": "Figma", "niveau": 7, "categorie": "Outils"},
+    {"nom": "Canva", "niveau": 7, "categorie": "Outils"},
+    {"nom": "Trello", "niveau": 8, "categorie": "Outils"},
     
     # Méthodologies
     {"nom": "Agile/Scrum", "niveau": 8, "categorie": "Méthodologies"},
-    {"nom": "Clean Code", "niveau": 8, "categorie": "Méthodologies"},
-    {"nom": "TDD", "niveau": 7, "categorie": "Méthodologies"},
 ]
 
 TIMELINE: list[TimelineEvent] = [
+    # Du plus récent au plus ancien
+    # === EXPÉRIENCES PROFESSIONNELLES ===
+    {
+        "annee": "Juillet 2025 - Décembre 2025",
+        "titre": "Équipier Polyvalent",
+        "etablissement": "McDonald's",
+        "description": "Travail en équipe dans un environnement à rythme soutenu (gestion des rushs). Application stricte des normes d'hygiène et de sécurité. Compétences développées : polyvalence, ponctualité.",
+        "type": "experience"
+    },
+    {
+        "annee": "Avril 2025 - Juin 2025",
+        "titre": "Stage Développeur Web (Angular)",
+        "etablissement": "Césarée",
+        "description": "Développement Front-End avec Angular. Conception et implémentation d'interfaces utilisateurs dynamiques et réactives. Optimisation de l'expérience utilisateur (UX/UI) et debugging. Participation aux réunions techniques et collaboration avec l'équipe.",
+        "type": "experience"
+    },
     # === FORMATIONS ===
     {
-        "annee": "2023 - 2026",
-        "titre": "BUT Informatique",
-        "etablissement": "IUT de Lyon - Université Claude Bernard",
-        "description": "Formation complète en informatique : développement web, bases de données, réseaux, sécurité et gestion de projets. Parcours Réalisation d'Applications avec spécialisation en développement full-stack.",
+        "annee": "2023 - Présent",
+        "titre": "BUT Informatique 3ème année",
+        "etablissement": "IUT de Montreuil",
+        "description": "Formation complète en informatique : développement web, bases de données, réseaux et gestion de projets. Spécialisation en développement full-stack avec Angular et Flask.",
         "type": "formation"
     },
     {
         "annee": "2023",
-        "titre": "Baccalauréat Général",
-        "etablissement": "Lycée du Parc - Lyon",
-        "description": "Baccalauréat avec spécialités Mathématiques et NSI (Numérique et Sciences Informatiques). Mention Très Bien. Projet de terminale : développement d'un jeu vidéo en Python.",
+        "titre": "Baccalauréat Général - Mention Assez Bien",
+        "etablissement": "Lycée",
+        "description": "Baccalauréat avec spécialités Mathématiques et NSI (Numérique et Sciences Informatiques).",
         "type": "formation"
     },
-    # === EXPÉRIENCES PROFESSIONNELLES ===
-    {
-        "annee": "2025",
-        "titre": "Alternance Ingénieur Logiciel",
-        "etablissement": "Digital Factory - Paris",
-        "description": "Alternance en 3ème année. Conception et développement de microservices cloud-native. Mise en place de pipelines CI/CD et monitoring avec Prometheus/Grafana.",
-        "type": "experience"
-    },
-    {
-        "annee": "2024",
-        "titre": "Stage Développeur Full-Stack",
-        "etablissement": "TechStart Solutions - Lyon",
-        "description": "Stage de 12 semaines en entreprise. Développement d'une application web interne avec Angular et Spring Boot. Participation aux sprints Agile et revue de code.",
-        "type": "experience"
-    },
-    {
-        "annee": "2022",
-        "titre": "Hackathon - 1ère Place",
-        "etablissement": "Nuit de l'Info - Lyon",
-        "description": "Première place au hackathon national avec une équipe de 5 étudiants. Développement d'une application web de sensibilisation au changement climatique en 24 heures.",
-        "type": "experience"
-    }
 ]
 
 
