@@ -1,11 +1,13 @@
-import { Injectable, inject, signal, computed } from '@angular/core';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { catchError, tap } from 'rxjs/operators';
-import { Observable, throwError, of } from 'rxjs';
-import { environment } from '../../environments/environment';
+/**
+ * DataService - Service de données pour le Portfolio
+ * Version STATIQUE - Pas besoin de backend !
+ */
+
+import { Injectable, signal, computed } from '@angular/core';
+import { PROJECTS, SKILLS, TIMELINE } from '../data/portfolio-data';
 
 // ============================================================================
-// Interfaces TypeScript (correspond aux TypedDict du backend)
+// Interfaces TypeScript
 // ============================================================================
 
 export interface Project {
@@ -19,7 +21,7 @@ export interface Project {
 
 export interface Skill {
     nom: string;
-    niveau: number; // sur 10
+    niveau: number;
     categorie: string;
 }
 
@@ -30,66 +32,38 @@ export interface TimelineEvent {
     description: string;
 }
 
-export interface PortfolioData {
-    projects: Project[];
-    skills: Skill[];
-    timeline: TimelineEvent[];
-}
-
 // ============================================================================
-// DataService avec Signals
+// DataService avec Signals (données statiques)
 // ============================================================================
 
 @Injectable({
     providedIn: 'root'
 })
 export class DataService {
-    private readonly http = inject(HttpClient);
-    private readonly API_URL = `${environment.apiUrl}/data`;
-
     // -------------------------------------------------------------------------
-    // Writable Signals pour stocker les données
+    // Signals avec données statiques directement
     // -------------------------------------------------------------------------
 
-    /** Signal pour les projets */
-    private readonly _projects = signal<Project[]>([]);
-
-    /** Signal pour les compétences */
-    private readonly _skills = signal<Skill[]>([]);
-
-    /** Signal pour la timeline */
-    private readonly _timeline = signal<TimelineEvent[]>([]);
-
-    /** Signal pour l'état de chargement */
+    private readonly _projects = signal<Project[]>(PROJECTS);
+    private readonly _skills = signal<Skill[]>(SKILLS);
+    private readonly _timeline = signal<TimelineEvent[]>(TIMELINE);
     private readonly _isLoading = signal<boolean>(false);
-
-    /** Signal pour les erreurs */
     private readonly _error = signal<string | null>(null);
 
     // -------------------------------------------------------------------------
-    // Signaux publics en lecture seule (exposés proprement)
+    // Signaux publics en lecture seule
     // -------------------------------------------------------------------------
 
-    /** Projets (readonly) */
     readonly projects = this._projects.asReadonly();
-
-    /** Compétences (readonly) */
     readonly skills = this._skills.asReadonly();
-
-    /** Timeline (readonly) */
     readonly timeline = this._timeline.asReadonly();
-
-    /** État de chargement (readonly) */
     readonly isLoading = this._isLoading.asReadonly();
-
-    /** Erreur (readonly) */
     readonly error = this._error.asReadonly();
 
     // -------------------------------------------------------------------------
-    // Computed Signals (données dérivées)
+    // Computed Signals
     // -------------------------------------------------------------------------
 
-    /** Compétences groupées par catégorie */
     readonly skillsByCategory = computed(() => {
         const skills = this._skills();
         const grouped = new Map<string, Skill[]>();
@@ -105,20 +79,16 @@ export class DataService {
         return grouped;
     });
 
-    /** Nombre total de projets */
     readonly projectCount = computed(() => this._projects().length);
 
-    /** Timeline triée par année (la plus récente en premier) */
     readonly timelineSorted = computed(() => {
         return [...this._timeline()].sort((a, b) => {
-            // Extraire la première année de chaque entrée
             const yearA = parseInt(a.annee.split(' ')[0], 10);
             const yearB = parseInt(b.annee.split(' ')[0], 10);
             return yearB - yearA;
         });
     });
 
-    /** Indique si les données ont été chargées au moins une fois */
     readonly hasData = computed(() =>
         this._projects().length > 0 ||
         this._skills().length > 0 ||
@@ -126,80 +96,19 @@ export class DataService {
     );
 
     // -------------------------------------------------------------------------
-    // Méthodes publiques
+    // Méthodes publiques (gardées pour compatibilité)
     // -------------------------------------------------------------------------
 
-    /**
-     * Récupère toutes les données du portfolio depuis l'API
-     * Utilise catchError pour gérer les erreurs de fetch
-     */
-    fetchPortfolioData(): Observable<PortfolioData> {
-        // Reset de l'état
-        this._isLoading.set(true);
-        this._error.set(null);
-
-        return this.http.get<PortfolioData>(this.API_URL).pipe(
-            tap((data) => {
-                // Mise à jour des signals avec les données reçues
-                this._projects.set(data.projects);
-                this._skills.set(data.skills);
-                this._timeline.set(data.timeline);
-                this._isLoading.set(false);
-
-                console.log('✅ Portfolio data loaded successfully:', {
-                    projects: data.projects.length,
-                    skills: data.skills.length,
-                    timeline: data.timeline.length
-                });
-            }),
-            catchError((error: HttpErrorResponse) => {
-                // Gestion des erreurs
-                const errorMessage = this.handleError(error);
-                this._error.set(errorMessage);
-                this._isLoading.set(false);
-
-                console.error('❌ Error fetching portfolio data:', errorMessage);
-
-                // Retourne une erreur observable
-                return throwError(() => new Error(errorMessage));
-            })
-        );
+    /** Plus besoin de fetch - les données sont déjà là ! */
+    loadData(): void {
+        // Les données sont déjà chargées via les signaux
+        console.log('✅ Portfolio data loaded (static)');
     }
 
-    /**
-     * Réinitialise toutes les données
-     */
     resetData(): void {
         this._projects.set([]);
         this._skills.set([]);
         this._timeline.set([]);
         this._error.set(null);
-    }
-
-    // -------------------------------------------------------------------------
-    // Méthodes privées
-    // -------------------------------------------------------------------------
-
-    /**
-     * Gère les erreurs HTTP et retourne un message utilisateur
-     */
-    private handleError(error: HttpErrorResponse): string {
-        let errorMessage: string;
-
-        if (error.status === 0) {
-            // Erreur réseau (serveur non accessible)
-            errorMessage = 'Impossible de contacter le serveur. Vérifiez que le backend est lancé sur le port 5000.';
-        } else if (error.status === 404) {
-            // Route non trouvée
-            errorMessage = 'L\'API n\'a pas été trouvée. Vérifiez l\'URL du backend.';
-        } else if (error.status >= 500) {
-            // Erreur serveur
-            errorMessage = 'Erreur serveur. Veuillez réessayer plus tard.';
-        } else {
-            // Autres erreurs
-            errorMessage = error.error?.message || `Erreur ${error.status}: ${error.statusText}`;
-        }
-
-        return errorMessage;
     }
 }

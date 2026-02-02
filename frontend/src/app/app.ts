@@ -1,4 +1,4 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, inject } from '@angular/core';
 
 // Components
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -23,32 +23,11 @@ import { DataService } from './services/data.service';
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
-export class App implements OnInit {
+export class App {
   private readonly dataService = inject(DataService);
 
-  // Expose les signals du service
+  // Expose les signals du service (données statiques)
   readonly projects = this.dataService.projects;
   readonly skills = this.dataService.skills;
   readonly timeline = this.dataService.timelineSorted;
-  readonly isLoading = this.dataService.isLoading;
-  readonly error = this.dataService.error;
-
-  ngOnInit(): void {
-    this.loadData();
-  }
-
-  /** Charge les données depuis l'API */
-  loadData(): void {
-    this.dataService.fetchPortfolioData().subscribe({
-      error: () => {
-        // L'erreur est déjà gérée dans le service
-        console.warn('Utilisation des données en mode hors ligne');
-      }
-    });
-  }
-
-  /** Réessayer le chargement */
-  retryLoad(): void {
-    this.loadData();
-  }
 }
