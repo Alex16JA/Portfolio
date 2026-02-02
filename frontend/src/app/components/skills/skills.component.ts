@@ -39,7 +39,7 @@ export class SkillsComponent {
         return skills.filter(s => s.categorie === category);
     });
 
-    /** Compétences groupées par catégorie */
+    /** Compétences groupées par catégorie (triées par ordre alphabétique) */
     readonly skillsByCategory = computed(() => {
         const skills = this.filteredSkills();
         const grouped = new Map<string, Skill[]>();
@@ -49,6 +49,11 @@ export class SkillsComponent {
                 grouped.set(skill.categorie, []);
             }
             grouped.get(skill.categorie)!.push(skill);
+        }
+
+        // Trier chaque catégorie par ordre alphabétique
+        for (const [category, categorySkills] of grouped) {
+            grouped.set(category, categorySkills.sort((a, b) => a.nom.localeCompare(b.nom)));
         }
 
         return grouped;
