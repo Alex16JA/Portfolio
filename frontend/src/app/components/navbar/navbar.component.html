@@ -1,0 +1,46 @@
+<nav class="navbar" [class.scrolled]="isScrolled()">
+  <div class="navbar-container">
+    <!-- Logo -->
+    <a href="#hero" class="navbar-logo">
+      <span class="logo-accent">&lt;</span>
+      Alex Music
+      <span class="logo-accent">/&gt;</span>
+    </a>
+
+    <!-- Desktop Navigation -->
+    <ul class="navbar-links">
+      @for (link of navLinks; track link.href) {
+        <li>
+          <a [href]="link.href" class="nav-link">
+            {{ link.label }}
+          </a>
+        </li>
+      }
+    </ul>
+
+    <!-- Mobile Menu Button -->
+    <button 
+      class="mobile-menu-btn" 
+      (click)="toggleMobileMenu()"
+      [attr.aria-expanded]="isMobileMenuOpen()"
+      aria-label="Toggle menu"
+    >
+      <span class="hamburger" [class.active]="isMobileMenuOpen()"></span>
+    </button>
+  </div>
+
+  <!-- Mobile Menu -->
+  @if (isMobileMenuOpen()) {
+    <div class="mobile-menu">
+      <ul class="mobile-links">
+        @for (link of navLinks; track link.href) {
+          <li>
+            <a [href]="link.href" class="mobile-link" (click)="closeMobileMenu()">
+              {{ link.label }}
+            </a>
+          </li>
+        }
+      </ul>
+    </div>
+  }
+</nav>

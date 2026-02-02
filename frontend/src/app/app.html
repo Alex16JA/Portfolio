@@ -1,0 +1,75 @@
+<!-- 🎨 Portfolio One-Page Application -->
+<div class="app-container">
+  <!-- Navigation -->
+  <app-navbar />
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <!-- Hero Section -->
+    <app-hero name="Alex Music" title="Développeur Full-Stack"
+      description="Étudiant en BUT 3 Informatique passionné par le développement web, les architectures cloud et l'intelligence artificielle." />
+
+    <!-- Error State -->
+    @if (error()) {
+    <div class="error-banner">
+      <div class="error-content">
+        <span class="error-icon">⚠️</span>
+        <p class="error-message">{{ error() }}</p>
+        <button class="error-retry" (click)="retryLoad()">
+          Réessayer
+        </button>
+      </div>
+    </div>
+    }
+
+    <!-- Projects Section -->
+    <app-projects [projects]="projects()" />
+
+    <!-- Skills Section -->
+    <app-skills [skills]="skills()" />
+
+    <!-- Timeline Section -->
+    <app-timeline [events]="timeline()" />
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+      <div class="section-container">
+        <div class="section-header">
+          <span class="section-tag">📬 Contact</span>
+          <h2 class="section-title">Me Contacter</h2>
+          <p class="section-description">
+            Intéressé par mon profil ? N'hésitez pas à me contacter !
+          </p>
+        </div>
+
+        <div class="contact-content">
+          <div class="contact-links">
+            <a href="mailto:alex.music@example.com" class="contact-link">
+              <span class="contact-icon">📧</span>
+              <span>alex.music@example.com</span>
+            </a>
+            <a href="https://github.com/alex-music" target="_blank" rel="noopener noreferrer" class="contact-link">
+              <span class="contact-icon">💻</span>
+              <span>github.com/alex-music</span>
+            </a>
+            <a href="https://linkedin.com/in/alex-music" target="_blank" rel="noopener noreferrer" class="contact-link">
+              <span class="contact-icon">🔗</span>
+              <span>linkedin.com/in/alex-music</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <p class="footer-text">
+        © 2026 Alex Music. Développé avec
+        <span class="footer-heart">💜</span>
+        en Angular 20
+      </p>
+    </div>
+  </footer>
+</div>

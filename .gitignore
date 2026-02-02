@@ -1,0 +1,15 @@
+# Python / Flask
+backend/venv/
+backend/__pycache__/
+backend/*.pyc
+backend/.env
+
+# Angular / Node
+frontend/node_modules/
+frontend/dist/
+frontend/.angular/
+frontend/.vscode/
+
+# Divers
+.DS_Store
+*.log

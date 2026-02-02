@@ -1,0 +1,52 @@
+<section id="timeline" class="timeline-section">
+    <div class="section-container">
+        <!-- Section Header -->
+        <div class="section-header">
+            <span class="section-tag">🎓 Parcours</span>
+            <h2 class="section-title">Mon Parcours</h2>
+            <p class="section-description">
+                Les étapes clés de ma formation et mes expériences professionnelles
+            </p>
+        </div>
+
+        <!-- Timeline -->
+        @if (events.length > 0) {
+        <div class="timeline">
+            <div class="timeline-line"></div>
+
+            @for (event of events; track event.annee; let i = $index) {
+            <div class="timeline-item" [class.active]="activeIndex === i" [class.left]="i % 2 === 0"
+                [class.right]="i % 2 !== 0" (mouseenter)="setActive(i)" (mouseleave)="setActive(null)">
+                <!-- Timeline Point -->
+                <div class="timeline-point">
+                    <div class="point-inner"></div>
+                </div>
+
+                <!-- Timeline Content -->
+                <div class="timeline-content">
+                    <span class="timeline-year">{{ event.annee }}</span>
+                    <h3 class="timeline-title">{{ event.titre }}</h3>
+                    <span class="timeline-location">{{ event.etablissement }}</span>
+                    <p class="timeline-description">{{ event.description }}</p>
+                </div>
+            </div>
+            }
+        </div>
+        } @else {
+        <!-- Loading State -->
+        <div class="timeline-loading">
+            @for (i of [1, 2, 3, 4]; track i) {
+            <div class="loading-item">
+                <div class="loading-point skeleton"></div>
+                <div class="loading-content">
+                    <div class="loading-year skeleton"></div>
+                    <div class="loading-title skeleton"></div>
+                    <div class="loading-location skeleton"></div>
+                    <div class="loading-desc skeleton"></div>
+                </div>
+            </div>
+            }
+        </div>
+        }
+    </div>
+</section>

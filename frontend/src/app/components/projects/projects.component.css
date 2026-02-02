@@ -1,0 +1,268 @@
+/* ============================================
+   📦 PROJECTS SECTION - CSS Grid Layout
+   ============================================ */
+
+.projects-section {
+    padding: var(--spacing-4xl) 0;
+    background-color: var(--color-background);
+}
+
+.section-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-lg);
+}
+
+/* Section Header */
+.section-header {
+    text-align: center;
+    margin-bottom: var(--spacing-3xl);
+}
+
+.section-tag {
+    display: inline-block;
+    font-size: var(--font-size-sm);
+    color: var(--color-accent);
+    background-color: rgba(139, 92, 246, 0.1);
+    padding: var(--spacing-xs) var(--spacing-md);
+    border-radius: var(--radius-full);
+    margin-bottom: var(--spacing-md);
+    border: 1px solid rgba(139, 92, 246, 0.2);
+}
+
+.section-title {
+    font-size: var(--font-size-4xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+    margin-bottom: var(--spacing-md);
+}
+
+.section-description {
+    font-size: var(--font-size-lg);
+    color: var(--color-text-secondary);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Projects Grid - CSS Grid */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: var(--spacing-xl);
+}
+
+/* Project Card */
+.project-card {
+    background-color: var(--color-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    transition:
+        transform var(--transition-base),
+        border-color var(--transition-base),
+        box-shadow var(--transition-base);
+}
+
+.project-card:hover,
+.project-card.hovered {
+    transform: scale(1.02);
+    border-color: var(--color-accent);
+    box-shadow:
+        0 20px 40px rgba(0, 0, 0, 0.3),
+        0 0 0 1px var(--color-accent),
+        0 0 30px rgba(139, 92, 246, 0.15);
+}
+
+/* Project Image */
+.project-image {
+    position: relative;
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+}
+
+.project-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--transition-slow);
+}
+
+.project-card:hover .project-image img {
+    transform: scale(1.1);
+}
+
+/* Overlay on hover */
+.project-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to top,
+            rgba(10, 10, 10, 0.9) 0%,
+            rgba(10, 10, 10, 0.4) 50%,
+            transparent 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity var(--transition-base);
+}
+
+.project-card:hover .project-overlay {
+    opacity: 1;
+}
+
+.project-link-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-sm) var(--spacing-lg);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text-primary);
+    background-color: var(--color-accent);
+    border: none;
+    border-radius: var(--radius-lg);
+    cursor: pointer;
+    transform: translateY(20px);
+    transition:
+        transform var(--transition-base),
+        background-color var(--transition-fast);
+}
+
+.project-card:hover .project-link-btn {
+    transform: translateY(0);
+}
+
+.project-link-btn:hover {
+    background-color: var(--color-accent-hover);
+}
+
+/* Project Content */
+.project-content {
+    padding: var(--spacing-lg);
+}
+
+.project-title {
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-primary);
+    margin-bottom: var(--spacing-sm);
+}
+
+.project-description {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+    margin-bottom: var(--spacing-md);
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* Project Tags */
+.project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-xs);
+}
+
+.project-tag {
+    font-size: var(--font-size-xs);
+    color: var(--color-accent);
+    background-color: rgba(139, 92, 246, 0.1);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: var(--radius-md);
+    border: 1px solid rgba(139, 92, 246, 0.2);
+    transition:
+        background-color var(--transition-fast),
+        border-color var(--transition-fast);
+}
+
+.project-tag:hover {
+    background-color: rgba(139, 92, 246, 0.2);
+    border-color: var(--color-accent);
+}
+
+/* Loading State */
+.loading-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: var(--spacing-xl);
+}
+
+.loading-card {
+    background-color: var(--color-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+}
+
+.loading-image {
+    aspect-ratio: 16 / 10;
+}
+
+.loading-content {
+    padding: var(--spacing-lg);
+}
+
+.loading-title {
+    height: 24px;
+    width: 70%;
+    margin-bottom: var(--spacing-sm);
+    border-radius: var(--radius-md);
+}
+
+.loading-desc {
+    height: 60px;
+    width: 100%;
+    margin-bottom: var(--spacing-md);
+    border-radius: var(--radius-md);
+}
+
+.loading-tags {
+    display: flex;
+    gap: var(--spacing-xs);
+}
+
+.loading-tag {
+    height: 24px;
+    width: 60px;
+    border-radius: var(--radius-md);
+}
+
+/* Skeleton animation */
+.skeleton {
+    background: linear-gradient(90deg,
+            var(--color-border) 25%,
+            var(--color-secondary-hover) 50%,
+            var(--color-border) 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: 200% 0;
+    }
+
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+
+    .projects-grid,
+    .loading-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .section-title {
+        font-size: var(--font-size-3xl);
+    }
+}

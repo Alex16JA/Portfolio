@@ -1,0 +1,54 @@
+<section id="hero" class="hero">
+    <div class="hero-container">
+        <!-- Background decoration -->
+        <div class="hero-bg-glow"></div>
+        <div class="hero-bg-grid"></div>
+
+        <!-- Content -->
+        <div class="hero-content">
+            <span class="hero-greeting">👋 Bienvenue sur mon portfolio</span>
+
+            <h1 class="hero-title">
+                Hello, je suis
+                <span class="hero-name gradient-text">{{ name }}</span>
+            </h1>
+
+            <h2 class="hero-subtitle">{{ title }}</h2>
+
+            <p class="hero-description">{{ description }}</p>
+
+            <!-- CTA Buttons -->
+            <div class="hero-cta">
+                <button class="btn-primary-glow" (click)="scrollToProjects()">
+                    <span>Voir mes projets</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M5 12h14" />
+                        <path d="m12 5 7 7-7 7" />
+                    </svg>
+                </button>
+
+                <button class="btn-outline-glow" (click)="scrollToContact()">
+                    <span>Me contacter</span>
+                </button>
+            </div>
+
+            <!-- Tech stack badges -->
+            <div class="hero-stack">
+                <span class="stack-label">Stack préféré :</span>
+                <div class="stack-badges">
+                    <span class="badge">Angular</span>
+                    <span class="badge">Python</span>
+                    <span class="badge">TypeScript</span>
+                    <span class="badge">Docker</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scroll indicator -->
+        <div class="scroll-indicator">
+            <span>Défiler</span>
+            <div class="scroll-arrow"></div>
+        </div>
+    </div>
+</section>

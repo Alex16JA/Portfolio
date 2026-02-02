@@ -1,0 +1,62 @@
+<section id="skills" class="skills-section">
+    <div class="section-container">
+        <!-- Section Header -->
+        <div class="section-header">
+            <span class="section-tag">⚡ Compétences</span>
+            <h2 class="section-title">Mes Compétences</h2>
+            <p class="section-description">
+                Technologies et outils que je maîtrise
+            </p>
+        </div>
+
+        <!-- Category Filter -->
+        @if (categories().length > 1) {
+        <div class="category-filter">
+            @for (category of categories(); track category) {
+            <button class="filter-btn"
+                [class.active]="(activeCategory() === category) || (category === 'Toutes' && !activeCategory())"
+                (click)="setCategory(category)">
+                {{ category }}
+            </button>
+            }
+        </div>
+        }
+
+        <!-- Skills Grid -->
+        @if (filteredSkills().length > 0) {
+        @for (entry of skillsByCategory() | keyvalue; track entry.key) {
+        <div class="skills-category">
+            <h3 class="category-title">{{ entry.key }}</h3>
+            <div class="skills-grid">
+                @for (skill of entry.value; track skill.nom) {
+                <div class="skill-card">
+                    <div class="skill-header">
+                        <span class="skill-name">{{ skill.nom }}</span>
+                        <span class="skill-level">{{ skill.niveau }}/10</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" [style.width.%]="skill.niveau * 10"></div>
+                    </div>
+                </div>
+                }
+            </div>
+        </div>
+        }
+        } @else {
+        <!-- Loading State -->
+        <div class="skills-loading">
+            <div class="loading-grid">
+                @for (i of [1, 2, 3, 4, 5, 6]; track i) {
+                <div class="loading-card">
+                    <div class="loading-header">
+                        <div class="loading-name skeleton"></div>
+                        <div class="loading-level skeleton"></div>
+                    </div>
+                    <div class="loading-bar skeleton"></div>
+                </div>
+                }
+            </div>
+        </div>
+        }
+    </div>
+</section>
