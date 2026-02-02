@@ -133,6 +133,16 @@
     filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
 }
 
+/* GitHub icon needs to be inverted to white on dark theme */
+.skill-badge img[src*="github"] {
+    filter: invert(1) drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+/* Flask icon also needs inversion */
+.skill-badge img[src*="flask"] {
+    filter: invert(1) drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
 .skill-name {
     font-size: var(--font-size-base);
     font-weight: var(--font-weight-medium);
