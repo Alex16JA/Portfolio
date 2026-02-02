@@ -68,8 +68,12 @@ def create_app() -> Flask:
     """Factory pattern pour créer l'application Flask."""
     app = Flask(__name__)
     
-    # Configuration CORS pour Angular (localhost:4200)
-    CORS(app, origins=["http://localhost:4200"])
+    # Configuration CORS pour Angular (localhost:4200) et Vercel (production)
+    CORS(app, origins=[
+        "http://localhost:4200",
+        "https://*.vercel.app",
+        "https://your-domain.com"  # Remplacer par ton domaine personnalisé si nécessaire
+    ])
     
     # Configuration de sécurité
     app.config.update(
