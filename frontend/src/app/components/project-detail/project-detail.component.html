@@ -1,119 +1,147 @@
-<div class="project-detail-page">
-    <!-- Back Button -->
-    <nav class="project-nav">
-        <button class="back-btn" (click)="goBack()">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M19 12H5M12 19l-7-7 7-7" />
-            </svg>
-            <span>Retour</span>
-        </button>
-    </nav>
+<div class="app-container">
+    <app-navbar />
 
-    @if (isLoading()) {
-    <!-- Loading State -->
-    <div class="loading-container">
-        <div class="loading-spinner">
-            <div class="spinner-ring"></div>
-            <div class="spinner-ring"></div>
-            <div class="spinner-ring"></div>
-        </div>
-        <p class="loading-text">Chargement du projet...</p>
-    </div>
-    } @else if (project()) {
-    <main class="project-content">
-        <!-- Hero Section -->
-        <header class="project-hero">
-            <div class="project-hero-content">
-                <h1 class="project-title">{{ project()!.titre }}</h1>
-                <p class="project-subtitle">{{ project()!.description }}</p>
-
-                <!-- Tags -->
-                <div class="project-tags">
-                    @for (tag of project()!.tags; track tag) {
-                    <span class="project-tag">{{ tag }}</span>
-                    }
-                </div>
-
-                <!-- Actions -->
-                <div class="project-actions">
-                    <button class="action-btn primary" (click)="openLink(project()!.lien_github)">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                            fill="currentColor">
-                            <path
-                                d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+    <main class="main-content detail-page">
+        @if (project(); as p) {
+        <article class="project-detail">
+            <!-- Header section -->
+            <header class="detail-header">
+                <div class="header-content">
+                    <button class="back-btn" (click)="goBack()">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="19" y1="12" x2="5" y2="12"></line>
+                            <polyline points="12 19 5 12 12 5"></polyline>
                         </svg>
-                        <span>Voir sur GitHub</span>
+                        Retour aux projets
                     </button>
-                </div>
-            </div>
-        </header>
 
-        @if (projectDetail()) {
-        <!-- Description Section -->
-        <section class="project-section">
-            <h2 class="section-title">📝 À propos du projet</h2>
-            <div class="section-content">
-                <p class="description-text">{{ projectDetail()!.description }}</p>
-            </div>
-        </section>
-
-        <!-- Screenshots Section -->
-        @if (projectDetail()!.screenshots && projectDetail()!.screenshots!.length > 0) {
-        <section class="project-section">
-            <h2 class="section-title">📸 Captures d'écran</h2>
-            <div class="screenshots-grid">
-                @for (screenshot of projectDetail()!.screenshots; track screenshot) {
-                <div class="screenshot-card">
-                    <img [src]="screenshot" alt="Capture d'écran du projet" loading="lazy" />
+                    <div class="hero-grid">
+                        <div class="hero-info">
+                            <span class="project-badge">PROJET</span>
+                            <h1 class="project-title">{{ p.titre }}</h1>
+                            <p class="project-subtitle">{{ p.description }}</p>
+                            
+                            <div class="project-actions">
+                                @if (p.lien_github) {
+                                <button class="btn-primary-glow" (click)="openLink(p.lien_github)">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                                    </svg>
+                                    <span>Voir le code</span>
+                                </button>
+                                }
+                                @if (p.lien_demo) {
+                                <button class="btn-outline-glow" (click)="openLink(p.lien_demo)">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                                        <polyline points="15 3 21 3 21 9"></polyline>
+                                        <line x1="10" y1="14" x2="21" y2="3"></line>
+                                    </svg>
+                                    <span>Voir le site</span>
+                                </button>
+                                }
+                            </div>
+                        </div>
+                        <div class="hero-image-container floating-mockup" (click)="openZoom(p.cover)">
+                            <img [src]="p.cover" [alt]="p.titre" class="hero-cover-img" />
+                            <div class="zoom-indicator">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="11" y1="8" x2="11" y2="14"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+            </header>
+
+            <div class="detail-container">
+                <!-- Gallery Section -->
+                @if (p.gallery && p.gallery.length > 0) {
+                <section class="gallery-section">
+                    <h2 class="section-title">Galerie du projet</h2>
+                    
+                    <div class="gallery-grid">
+                        @for (item of p.gallery; track item.title) {
+                        <div class="gallery-card">
+                            <div class="gallery-image-wrapper" (click)="openZoom(item.image)" style="cursor: pointer;">
+                                <img [src]="item.image" [alt]="item.title" loading="lazy" />
+                                <div class="zoom-indicator">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="11" y1="8" x2="11" y2="14"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg>
+                                </div>
+                            </div>
+                            <div class="gallery-info">
+                                <h3>{{ item.title }}</h3>
+                                <p>{{ item.description }}</p>
+                            </div>
+                        </div>
+                        }
+                    </div>
+                </section>
+                }
+
+                <!-- Technologies Section -->
+                @if (p.stack && p.stack.length > 0) {
+                <section class="technologies-section">
+                    <span class="sub-title">TECHNOLOGIES</span>
+                    <h2 class="section-title">Stack Technique</h2>
+                    
+                    <div class="tech-grid">
+                        @for (tech of p.stack; track tech.name) {
+                        <div class="tech-box">
+                            @if (tech.icon) {
+                            <img [src]="tech.icon" [alt]="tech.name" />
+                            }
+                            <span>{{ tech.name }}</span>
+                        </div>
+                        }
+                    </div>
+                </section>
+                }
+
+                <!-- Bilan Section -->
+                @if (p.bilan && p.bilan.length > 0) {
+                <section class="bilan-section">
+                    <div class="bilan-card">
+                        <div class="bilan-header">
+                            <div class="bilan-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                    <polyline points="14 2 14 8 20 8"></polyline>
+                                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                                    <polyline points="10 9 9 9 8 9"></polyline>
+                                </svg>
+                            </div>
+                            <h2>Bilan</h2>
+                        </div>
+                        <ul class="bilan-list">
+                            @for (item of p.bilan; track item) {
+                            <li>{{ item }}</li>
+                            }
+                        </ul>
+                    </div>
+                </section>
                 }
             </div>
-        </section>
+        </article>
+        
+        <!-- Zoom Modal -->
+        @if (zoomedImage()) {
+        <div class="zoom-modal" (click)="closeZoom()">
+            <button class="close-zoom" (click)="closeZoom()" aria-label="Fermer le zoom">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+            <img [src]="zoomedImage()" alt="Capture d'écran agrandie" class="zoomed-image" (click)="$event.stopPropagation()" />
+        </div>
         }
-
-        <!-- Tech Stack Section -->
-        @if (projectDetail()!.stack && projectDetail()!.stack!.length > 0) {
-        <section class="project-section">
-            <h2 class="section-title">🛠️ Technologies utilisées</h2>
-            <div class="stack-grid">
-                @for (tech of projectDetail()!.stack; track tech.name) {
-                <div class="stack-badge">
-                    @if (tech.icon) {
-                    <img [src]="tech.icon" [alt]="tech.name" class="stack-icon" loading="lazy" />
-                    }
-                    <span class="stack-name">{{ tech.name }}</span>
-                </div>
-                }
-            </div>
-        </section>
-        }
-
-        <!-- Summary Section -->
-        @if (projectDetail()!.bilan) {
-        <section class="project-section bilan-section">
-            <h2 class="section-title">💡 Bilan</h2>
-            <div class="bilan-content">
-                <p>{{ projectDetail()!.bilan }}</p>
-            </div>
-        </section>
-        }
+        
         } @else {
-        <!-- No details available -->
-        <section class="project-section">
-            <div class="no-details">
-                <p>Détails supplémentaires non disponibles pour ce projet.</p>
-                <p class="hint">Consultez le dépôt GitHub pour plus d'informations.</p>
-            </div>
-        </section>
+        <div class="not-found">
+            <h2>Projet introuvable</h2>
+            <p>Désolé, les détails de ce projet ne sont pas disponibles.</p>
+            <button class="btn-primary-glow" (click)="goBack()">Retour à l'accueil</button>
+        </div>
         }
     </main>
-    } @else {
-    <!-- Project not found -->
-    <div class="not-found">
-        <h2>Projet introuvable</h2>
-        <p>Le projet demandé n'existe pas ou n'est plus disponible.</p>
-        <button class="action-btn primary" (click)="goBack()">Retour à l'accueil</button>
-    </div>
-    }
 </div>

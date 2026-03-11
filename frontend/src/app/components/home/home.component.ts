@@ -30,15 +30,13 @@ export class HomeComponent implements OnInit {
     readonly projects = this.dataService.projects;
     readonly skills = this.dataService.skills;
     readonly timeline = this.dataService.timelineSorted;
-    readonly isLoading = this.dataService.isLoading;
-    readonly error = this.dataService.error;
+
 
     ngOnInit(): void {
-        // Charge les projets depuis GitHub au démarrage
-        this.dataService.fetchProjects();
+        // Plus de chargement GitHub, tout est statique
     }
 
     retryLoad(): void {
-        this.dataService.fetchProjects();
+        // Plus rien à faire ici
     }
 }

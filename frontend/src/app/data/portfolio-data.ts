@@ -1,9 +1,9 @@
 /**
  * Données statiques du portfolio
- * Compétences et Timeline (les projets viennent de l'API GitHub)
+ * Compétences et Timeline
  */
 
-import { Skill, TimelineEvent } from '../services/data.service';
+import { Skill, TimelineEvent, Project } from '../services/data.service';
 
 // ============================================================================
 // COMPÉTENCES
@@ -75,48 +75,61 @@ export const TIMELINE: TimelineEvent[] = [
     },
     {
         annee: "2023",
-        titre: "Baccalauréat Général - Mention Assez Bien",
+        titre: "Baccalauréat Général",
         etablissement: "Lycée",
         description: "Baccalauréat avec spécialités Mathématiques et NSI."
     },
 ];
 
 // ============================================================================
-// DÉTAILS DES PROJETS (pour les pages dédiées)
+// PROJETS
 // ============================================================================
 
-export interface TechStack {
-    name: string;
-    icon?: string;
-}
-
-export interface ProjectDetail {
-    description: string;
-    screenshots?: string[];
-    stack?: TechStack[];
-    bilan?: string;
-}
-
-/**
- * Map des détails de projets, indexée par ID GitHub
- * Tu peux ajouter des détails pour chaque projet ici
- */
-export const PROJECT_DETAILS: Record<number, ProjectDetail> = {
-    // Exemple de structure - à remplir avec tes vrais projets
-    // L'ID correspond à l'ID GitHub du repo
-    /*
-    123456789: {
-        description: "Description détaillée du projet...",
-        screenshots: [
-            "/assets/screenshots/projet1-home.png",
-            "/assets/screenshots/projet1-dashboard.png"
+export const PROJECTS: Project[] = [
+    {
+        id: "portfolio",
+        titre: "Portfolio",
+        description: "Ce portfolio est une application web responsive développée pour présenter mes projets, compétences et parcours. Il met en avant une navigation fluide, un design moderne et une intégration dynamique.",
+        descriptionLong: "Ce projet m'a permis de perfectionner mes compétences en Angular, en responsive design, et en développement front-end moderne. J'ai également travaillé sur l'accessibilité et l'optimisation des performances. Le portfolio est pensé pour être facilement évolutif et maintenable. Les données sont désormais entièrement statiques pour des performances optimales.",
+        tags: ["Angular", "TypeScript", "HTML/CSS"],
+        lien_github: "https://github.com/Alex16JA/Portfolio",
+        cover: "/assets/covers/Portfolio/PortfolioCover.png",
+        gallery: [
+            {
+                image: "/assets/screenshots/Portfolio/PortfolioHome.png",
+                title: "Page d'accueil",
+                description: "Présentation de l'accueil et des projets récents."
+            },
+            {
+                image: "/assets/screenshots/Portfolio/PortfolioSkill.png",
+                title: "Compétences",
+                description: "Mise en avant des différentes technologies maîtrisées."
+            },
+            {
+                image: "/assets/screenshots/Portfolio/PortfolioParcours.png",
+                title: "Parcours et Expériences",
+                description: "Affichage chronologique du parcours professionnel et scolaire."
+            },
+            {
+                image: "/assets/screenshots/Portfolio/PortfolioMobile.png",
+                title: "Mobile Design",
+                description: "Adaptation parfaite sur tous les supports mobiles."
+            }
         ],
         stack: [
             { name: "Angular", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angular/angular-original.svg" },
             { name: "TypeScript", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" },
+            { name: "HTML5", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" },
+            { name: "CSS3", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" },
+            { name: "Python", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" },
+            { name: "Flask", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flask/flask-original.svg" }
         ],
-        bilan: "Ce projet m'a permis d'apprendre..."
+        bilan: [
+            "Architecture basée sur des composants Angular isolés",
+            "Responsive design complet avec CSS natif",
+            "Données statiques pour une performance maximale et aucun délai de chargement",
+            "Effets visuels modernes inspirés du style glassmorphism"
+        ]
     }
-    */
-};
+];
 

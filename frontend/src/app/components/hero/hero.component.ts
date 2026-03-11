@@ -16,13 +16,7 @@ export class HeroComponent {
     /** Description courte */
     @Input() description = 'Étudiant en BUT 3 Informatique passionné par le développement web, les architectures cloud et l\'intelligence artificielle.';
 
-    /** Scroll vers la section projets */
-    scrollToProjects(): void {
-        const element = document.getElementById('projects');
-        if (element) {
-            element.scrollIntoView({ behavior: 'smooth' });
-        }
-    }
+
 
     /** Scroll vers la section contact */
     scrollToContact(): void {

@@ -1,28 +1,26 @@
 import { Component, Input } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 import { Project } from '../../services/data.service';
 
 @Component({
-    selector: 'app-projects',
-    standalone: true,
-    imports: [RouterLink],
-    templateUrl: './projects.component.html',
-    styleUrl: './projects.component.css'
+  selector: 'app-projects',
+  standalone: true,
+  imports: [CommonModule, RouterModule],
+  templateUrl: './projects.component.html',
+  styleUrl: './projects.component.css'
 })
 export class ProjectsComponent {
-    /** Liste des projets à afficher */
-    @Input() projects: Project[] = [];
+  @Input() projects: Project[] = [];
+  hoveredProjectId: string | null = null;
 
-    /** Projet actuellement survolé (pour effet) */
-    hoveredProjectId: number | null = null;
+  setHovered(id: string | null): void {
+      this.hoveredProjectId = id;
+  }
 
-    /** Définit le projet survolé */
-    setHovered(id: number | null): void {
-        this.hoveredProjectId = id;
-    }
-
-    /** Ouvre le lien GitHub dans un nouvel onglet */
-    openGithub(url: string): void {
-        window.open(url, '_blank', 'noopener,noreferrer');
-    }
+  openGithub(url?: string): void {
+      if (url) {
+          window.open(url, '_blank');
+      }
+  }
 }

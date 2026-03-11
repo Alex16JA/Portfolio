@@ -1,56 +1,52 @@
-import { Component, inject, signal, computed, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Component, OnInit, inject, signal } from '@angular/core';
+import { CommonModule, Location } from '@angular/common';
+import { ActivatedRoute, RouterModule } from '@angular/router';
 import { DataService, Project } from '../../services/data.service';
-import { PROJECT_DETAILS, ProjectDetail } from '../../data/portfolio-data';
+import { NavbarComponent } from '../navbar/navbar.component';
 
 @Component({
-    selector: 'app-project-detail',
-    standalone: true,
-    imports: [],
-    templateUrl: './project-detail.component.html',
-    styleUrl: './project-detail.component.css'
+  selector: 'app-project-detail',
+  standalone: true,
+  imports: [CommonModule, RouterModule, NavbarComponent],
+  templateUrl: './project-detail.component.html',
+  styleUrl: './project-detail.component.css'
 })
 export class ProjectDetailComponent implements OnInit {
-    private readonly route = inject(ActivatedRoute);
-    private readonly router = inject(Router);
-    private readonly dataService = inject(DataService);
+  private route = inject(ActivatedRoute);
+  private dataService = inject(DataService);
+  private location = inject(Location);
 
-    readonly projectId = signal<number | null>(null);
+  project = signal<Project | null>(null);
+  zoomedImage = signal<string | null>(null);
 
-    readonly project = computed<Project | null>(() => {
-        const id = this.projectId();
-        if (id === null) return null;
-        return this.dataService.projects().find(p => p.id === id) || null;
-    });
-
-    readonly projectDetail = computed<ProjectDetail | null>(() => {
-        const id = this.projectId();
-        if (id === null) return null;
-        return PROJECT_DETAILS[id] || null;
-    });
-
-    readonly isLoading = this.dataService.isLoading;
-
-    ngOnInit(): void {
-        // Charger les projets si pas encore fait
-        if (this.dataService.projects().length === 0) {
-            this.dataService.fetchProjects();
-        }
-
-        // Récupérer l'ID du projet depuis l'URL
-        this.route.paramMap.subscribe(params => {
-            const id = params.get('id');
-            if (id) {
-                this.projectId.set(parseInt(id, 10));
-            }
-        });
+  ngOnInit(): void {
+    window.scrollTo(0, 0); // Reset scroll
+    const id = this.route.snapshot.paramMap.get('id');
+    if (id) {
+      const p = this.dataService.getProjectById(id);
+      if (p) {
+        this.project.set(p);
+      }
     }
+  }
 
-    goBack(): void {
-        this.router.navigate(['/']);
-    }
+  goBack(): void {
+    this.location.back();
+  }
 
-    openLink(url: string): void {
-        window.open(url, '_blank', 'noopener,noreferrer');
+  openLink(url?: string): void {
+    if (url) {
+      window.open(url, '_blank');
     }
+  }
+
+  openZoom(imageUrl: string): void {
+    this.zoomedImage.set(imageUrl);
+    document.body.style.overflow = 'hidden'; // Prevent background scrolling
+  }
+
+  closeZoom(): void {
+    this.zoomedImage.set(null);
+    document.body.style.overflow = '';
+  }
 }

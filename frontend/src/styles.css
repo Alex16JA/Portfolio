@@ -7,13 +7,13 @@
    📦 CSS VARIABLES (Design System)
    -------------------------------------------- */
 :root {
-    /* Colors - Main Palette */
-    --color-background: #0a0a0a;
-    --color-accent: #8b5cf6;
-    --color-accent-hover: #a78bfa;
-    --color-accent-glow: rgba(139, 92, 246, 0.4);
-    --color-secondary: #161616;
-    --color-secondary-hover: #1e1e1e;
+    /* Colors - Main Palette (Astrology Theme) */
+    --color-background: #060214; /* Deep space dark purple/blue */
+    --color-accent: #CA3CFF; /* User requested purple */
+    --color-accent-hover: #D86DFF; /* Lighter purple for hover */
+    --color-accent-glow: rgba(202, 60, 255, 0.4);
+    --color-secondary: #0D0626; /* Slightly lighter deep space */
+    --color-secondary-hover: #170A38;
 
     /* Colors - Text */
     --color-text-primary: #ffffff;
@@ -21,9 +21,9 @@
     --color-text-muted: #71717a;
 
     /* Colors - Borders & Surfaces */
-    --color-border: #27272a;
-    --color-border-hover: #3f3f46;
-    --color-surface: #0f0f0f;
+    --color-border: #2A1B54; /* Deep purple border */
+    --color-border-hover: #502A9E;
+    --color-surface: #0a041c;
 
     /* Typography */
     --font-family-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
