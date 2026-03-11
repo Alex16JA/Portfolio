@@ -4,13 +4,12 @@ Ce projet a été généré à l'aide de [Angular CLI](https://github.com/angula
 
 ## Description du Projet
 
-Ce projet est un portfolio personnel développé avec Angular. Il présente les compétences, les projets et le parcours de l'utilisateur. Le portfolio est structuré de manière à offrir une expérience utilisateur fluide et intuitive.
+Ce projet est un portfolio personnel développé avec Angular. Il présente mes compétences, mes projets et mon parcours. Le portfolio est structuré de manière à offrir une expérience utilisateur fluide et intuitive.
 
 ## Dépendances
 
 Le projet utilise les technologies suivantes :
 - **Angular**: Framework de développement web utilisé pour construire l'interface utilisateur.
-- **Vitest**: Test runner utilisé pour les tests unitaires.
 - **TypeScript**: Langage de programmation utilisé pour le développement.
 - **Angular CLI**: Outil de ligne de commande pour gérer le projet Angular.
 
