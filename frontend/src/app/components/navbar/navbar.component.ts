@@ -17,7 +17,7 @@ export class NavbarComponent {
     ];
 
     /** Lien vers le CV (téléchargement direct) */
-    readonly cvLink = '/CV_Alexandre_PHAM_2025.pdf';
+    readonly cvLink = '/CV_2026-03-05_Alexandre_PHAM.pdf';
 
     /** État du scroll pour l'effet de fond */
     isScrolled = signal(false);
