@@ -13,3 +13,4 @@ frontend/.vscode/
 # Divers
 .DS_Store
 *.log
+.aider*

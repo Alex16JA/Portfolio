@@ -20,25 +20,12 @@ Le projet est organisé comme suit :
 
 Pour démarrer un serveur de développement local, exécutez la commande suivante :
 
-```bash
+```PowerShell
 ng serve
 ```
 
 Une fois le serveur lancé, ouvrez votre navigateur et accédez à `http://localhost:4200/`. L'application se rechargera automatiquement lorsque vous modifierez l'un des fichiers source.
 
-## Construction
-
-Pour construire le projet, exécutez la commande suivante :
-
-```bash
-ng build
-```
-
-Cette commande compilera votre projet et stockera les artefacts de construction dans le répertoire `dist/`.
-
-## License
-
-Ce projet est sous licence MIT. Pour plus d'informations, consultez le fichier [LICENSE](LICENSE).
 
 ## Auteurs
 
