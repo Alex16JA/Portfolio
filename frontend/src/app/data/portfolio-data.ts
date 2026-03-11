@@ -18,10 +18,15 @@ export const SKILLS: Skill[] = [
     { nom: "PHP", categorie: "Langages", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" },
     { nom: "Shell", categorie: "Langages", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bash/bash-original.svg" },
 
+    // Mobile & Cross-platform
+    { nom: "Flutter", categorie: "Mobile", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg" },
+
     // Frameworks
     { nom: "Angular", categorie: "Frontend", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angular/angular-original.svg" },
     { nom: "Flask", categorie: "Backend", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flask/flask-original.svg" },
     { nom: "JUnit", categorie: "Backend", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/junit/junit-original.svg" },
+    { nom: "Spring Boot", categorie: "Backend", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg" },
+    { nom: "REST API", categorie: "API", icon: "https://img.icons8.com/ios-filled/50/000000/api-settings.png" },
 
     // Bases de données
     { nom: "PostgreSQL", categorie: "Base de données", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" },
@@ -32,6 +37,8 @@ export const SKILLS: Skill[] = [
     { nom: "Docker", categorie: "DevOps", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" },
     { nom: "Git/GitHub", categorie: "DevOps", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" },
     { nom: "Linux (Ubuntu)", categorie: "DevOps", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ubuntu/ubuntu-original.svg" },
+    { nom: "Jenkins", categorie: "DevOps", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jenkins/jenkins-original.svg" },
+    { nom: "Kubernetes", categorie: "DevOps", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg" },
 
     // Outils de conception
     { nom: "VSCode", categorie: "Outils", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" },
