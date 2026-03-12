@@ -333,6 +333,66 @@ export const PROJECTS: Project[] = [
             "Système de commandes avec panier et historique",
             "Workflow de demandes d'ajout de buvettes avec validation"
         ]
+    },
+    {
+        id: "iut-coffee",
+        titre: "IUT-Coffee",
+        description: "Application web de Click & Collect pour simplifier les commandes à la cafétéria de l'IUT. Permet aux étudiants de passer commande en ligne et de retirer leurs produits à l'heure convenue.",
+        descriptionLong: "IUT-Coffee est un projet de gestion de commandes Click & Collect développé pour la cafétéria de l'IUT de Montreuil. L'application permet aux étudiants de consulter le menu, de passer commande en ligne, de suivre l'avancement de leur commande et de retirer leurs produits à un horaire prédit. Le projet utilise une architecture moderne avec Angular pour le front-end, Flask (Python) pour l'API et PostgreSQL pour la base de données.",
+        tags: ["Angular", "TypeScript", "Python", "Flask", "PostgreSQL"],
+        cover: "/assets/covers/Caf/CafCover.jpg",
+        gallery: [
+            {
+                image: "/assets/screenshots/Caf/CafLogin.png",
+                title: "Connexion",
+                description: "Page de connexion pour accéder à l'application."
+            },
+            {
+                image: "/assets/screenshots/Caf/CafProductList.png",
+                title: "Liste des produits",
+                description: "Catalogue des produits disponibles à la cafétéria."
+            },
+            {
+                image: "/assets/screenshots/Caf/CafAddProduct.png",
+                title: "Ajout de produits au panier",
+                description: "Interface d'ajout de produits au panier de commande."
+            },
+            {
+                image: "/assets/screenshots/Caf/CafCart.png",
+                title: "Panier de commande",
+                description: "Récapitulatif du panier avec totals et options de validation."
+            },
+            {
+                image: "/assets/screenshots/Caf/CafCommandStatus.png",
+                title: "Suivi de commande",
+                description: "Affichage du statut et de l'heure estimée de retrait de la commande."
+            },
+            {
+                image: "/assets/screenshots/Caf/CafGestionCommand.png",
+                title: "Gestion des commandes (Admin)",
+                description: "Interface d'administration pour gérer les commandes en cours."
+            },
+            {
+                image: "/assets/screenshots/Caf/CafGestionProduct.png",
+                title: "Gestion des produits (Admin)",
+                description: "Interface pour ajouter, modifier ou supprimer les produits du menu."
+            }
+        ],
+        stack: [
+            { name: "Angular", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angular/angular-original.svg" },
+            { name: "TypeScript", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" },
+            { name: "Python", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" },
+            { name: "Flask", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flask/flask-original.svg" },
+            { name: "PostgreSQL", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" },
+            { name: "Docker", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" }
+        ],
+        bilan: [
+            "Développement d'un système de Click & Collect complet",
+            "Gestion des commandes avec suivi de statut en temps réel",
+            "Interface utilisateur pour clients et section d'administration",
+            "Système d'authentification et gestion des rôles",
+            "Optimisation du processus de commande pour réduire les files d'attente"
+        ]
     }
 ];
 
