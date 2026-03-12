@@ -130,6 +130,47 @@ export const PROJECTS: Project[] = [
             "Données statiques pour une performance maximale et aucun délai de chargement",
             "Effets visuels modernes inspirés du style glassmorphism"
         ]
+    },
+    {
+        id: "league-of-clicker",
+        titre: "League Of Clicker",
+        description: "Projet de 2ème année de BUT Informatique visant à apprendre le développement mobile.",
+        descriptionLong: "League Of Clicker est une application mobile développée en Flutter et Dart, avec un backend en PHP. Ce projet d'étude m'a permis de me familiariser avec le développement mobile cross-platform, la gestion des états en Flutter, et la communication avec une API web.",
+        tags: ["Flutter", "Dart", "PHP", "Mobile"],
+        lien_github: "https://github.com/edetommaso/LOL_Clicker",
+        cover: "/assets/covers/LoC/LoCCover.png",
+        gallery: [
+            {
+                image: "/assets/screenshots/LoC/LoCHome.png",
+                title: "Accueil de l'application",
+                description: "Vue principale avec les informations globales de League Of Clicker."
+            },
+            {
+                image: "/assets/screenshots/LoC/LoCMonster.png",
+                title: "Combat de monstres",
+                description: "Vue du jeu en plein combat contre les monstres."
+            },
+            {
+                image: "/assets/screenshots/LoC/LoCStat.png",
+                title: "Statistiques du joueur",
+                description: "Écran détaillant les statistiques actuelles du joueur."
+            },
+            {
+                image: "/assets/screenshots/LoC/LoCShop.png",
+                title: "Boutique du jeu",
+                description: "Boutique pour acheter des améliorations."
+            }
+        ],
+        stack: [
+            { name: "Flutter", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg" },
+            { name: "Dart", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dart/dart-original.svg" },
+            { name: "PHP", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" }
+        ],
+        bilan: [
+            "Apprentissage du framework Flutter pour le mobile",
+            "Création d'interfaces mobiles interactives et réactives",
+            "Communication asynchrone avec une API web en PHP"
+        ]
     }
 ];
 
