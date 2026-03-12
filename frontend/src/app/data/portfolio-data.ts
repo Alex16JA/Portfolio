@@ -243,6 +243,96 @@ export const PROJECTS: Project[] = [
             "Interface de révision interactive avec système question/réponse",
             "Filtrage avancé et recherche de flashcards"
         ]
+    },
+    {
+        id: "reprise-appli",
+        titre: "Reprise d'Application - Buvette",
+        description: "Reprise et modernisation d'une application PHP de gestion de buvettes associatives vers une architecture Angular / Python Flask / PostgreSQL.",
+        descriptionLong: "Ce projet de SAE de 3ème année consistait à reprendre une application existante en PHP dédiée à la gestion de buvettes associatives, et à la moderniser entièrement avec une stack moderne : Angular pour le front-end, Flask (Python) pour l'API back-end, et PostgreSQL pour la base de données. L'application permet de gérer les buvettes, les produits, le staff, les commandes et l'historique, avec un système d'authentification et de rôles.",
+        tags: ["Angular", "TypeScript", "Python", "Flask", "PostgreSQL"],
+        cover: "/assets/covers/Buv/BuvCover.png",
+        gallery: [
+            {
+                image: "/assets/screenshots/Buv/BuvLogin.png",
+                title: "Connexion",
+                description: "Page de connexion sécurisée pour accéder à l'application."
+            },
+            {
+                image: "/assets/screenshots/Buv/BuvRegister.png",
+                title: "Inscription",
+                description: "Formulaire d'inscription pour créer un nouveau compte."
+            },
+            {
+                image: "/assets/screenshots/Buv/BuvHome.png",
+                title: "Accueil",
+                description: "Page d'accueil avec vue d'ensemble de l'application."
+            },
+            {
+                image: "/assets/screenshots/Buv/BuvListBuv.png",
+                title: "Liste des buvettes",
+                description: "Affichage de toutes les buvettes associatives disponibles."
+            },
+            {
+                image: "/assets/screenshots/Buv/BuvGestionBuv.png",
+                title: "Gestion d'une buvette",
+                description: "Interface d'administration et de gestion d'une buvette."
+            },
+            {
+                image: "/assets/screenshots/Buv/BuvGestionStaff.png",
+                title: "Gestion du staff",
+                description: "Gestion des membres du staff affectés à une buvette."
+            },
+            {
+                image: "/assets/screenshots/Buv/BuvProductList.png",
+                title: "Liste des produits",
+                description: "Catalogue des produits disponibles à la vente."
+            },
+            {
+                image: "/assets/screenshots/Buv/BuvModifProduct.png",
+                title: "Modification de produit",
+                description: "Édition des informations d'un produit existant."
+            },
+            {
+                image: "/assets/screenshots/Buv/BuvCart.png",
+                title: "Panier",
+                description: "Panier de commande avec récapitulatif des articles sélectionnés."
+            },
+            {
+                image: "/assets/screenshots/Buv/BuvHistory.png",
+                title: "Historique",
+                description: "Historique global des activités et transactions."
+            },
+            {
+                image: "/assets/screenshots/Buv/BuvHistoryCommand.png",
+                title: "Historique des commandes",
+                description: "Détail de l'historique des commandes passées."
+            },
+            {
+                image: "/assets/screenshots/Buv/BuvRequestAddBuv.png",
+                title: "Demande d'ajout de buvette",
+                description: "Formulaire de demande pour créer une nouvelle buvette."
+            },
+            {
+                image: "/assets/screenshots/Buv/BuvRequestAddBuvDemande.png",
+                title: "Suivi des demandes",
+                description: "Suivi et validation des demandes d'ajout de buvettes."
+            }
+        ],
+        stack: [
+            { name: "Angular", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angular/angular-original.svg" },
+            { name: "TypeScript", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" },
+            { name: "Python", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" },
+            { name: "Flask", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flask/flask-original.svg" },
+            { name: "PostgreSQL", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" },
+            { name: "Docker", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" }
+        ],
+        bilan: [
+            "Migration complète d'une application PHP legacy vers une architecture moderne",
+            "Développement full-stack avec Angular et Flask",
+            "Gestion de buvettes avec système de rôles et permissions",
+            "Système de commandes avec panier et historique",
+            "Workflow de demandes d'ajout de buvettes avec validation"
+        ]
     }
 ];
 
