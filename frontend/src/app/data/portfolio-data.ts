@@ -173,6 +173,76 @@ export const PROJECTS: Project[] = [
             "Création d'interfaces mobiles interactives et réactives",
             "Communication asynchrone avec une API web en PHP"
         ]
+    },
+    {
+        id: "cognicard",
+        titre: "CogniCard",
+        description: "Application web de flashcards intelligente permettant de créer, organiser et réviser des cartes de mémorisation par catégories et cours.",
+        descriptionLong: "CogniCard (Flash Notes) est une application de révision par flashcards développée dans le cadre d'un projet de 3ème année de BUT Informatique. Elle permet aux utilisateurs de créer un compte, d'organiser leurs cartes en catégories et cours, puis de réviser via un système de questions/réponses. L'application propose des fonctionnalités de filtrage avancé, de gestion de compte et de personnalisation des contenus pédagogiques.",
+        tags: ["Angular", "TypeScript", "Python", "Flask", "PostgreSQL"],
+        cover: "/assets/covers/CC/CCCover.png",
+        gallery: [
+            {
+                image: "/assets/screenshots/CC/CCCreeCompte.png",
+                title: "Création de compte",
+                description: "Formulaire d'inscription pour accéder à l'application."
+            },
+            {
+                image: "/assets/screenshots/CC/CCGestionCompte.png",
+                title: "Gestion du compte",
+                description: "Interface de gestion et personnalisation du profil utilisateur."
+            },
+            {
+                image: "/assets/screenshots/CC/CCCreeCategorie.png",
+                title: "Création de catégorie",
+                description: "Ajout d'une nouvelle catégorie pour organiser les flashcards."
+            },
+            {
+                image: "/assets/screenshots/CC/CCAddCategorie.png",
+                title: "Ajout de catégories",
+                description: "Vue d'ensemble des catégories disponibles et ajout rapide."
+            },
+            {
+                image: "/assets/screenshots/CC/CCAffichage.png",
+                title: "Affichage des cours",
+                description: "Liste des cours et flashcards disponibles dans une catégorie."
+            },
+            {
+                image: "/assets/screenshots/CC/CCModifCours.png",
+                title: "Modification de cours",
+                description: "Édition du contenu d'un cours et de ses flashcards associées."
+            },
+            {
+                image: "/assets/screenshots/CC/CCFiltre.png",
+                title: "Filtrage Possible",
+                description: "Système de filtres pour retrouver rapidement les cartes souhaitées."
+            },
+            {
+                image: "/assets/screenshots/CC/CCVueQuestion.png",
+                title: "Mode révision - Vue Question",
+                description: "Affichage de la face question d'une flashcard lors de la révision."
+            },
+            {
+                image: "/assets/screenshots/CC/CCVueReponse.png",
+                title: "Mode révision - Vue Réponse",
+                description: "Affichage de la réponse après avoir tenté de répondre à la question."
+            }
+        ],
+        stack: [
+            { name: "Angular", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angular/angular-original.svg" },
+            { name: "TypeScript", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" },
+            { name: "Python", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" },
+            { name: "Flask", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flask/flask-original.svg" },
+            { name: "PostgreSQL", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" },
+            { name: "Docker", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" }
+        ],
+        bilan: [
+            "Conception et développement full-stack avec Angular et Flask",
+            "Système d'authentification et gestion de comptes utilisateurs",
+            "Organisation hiérarchique des contenus par catégories et cours",
+            "Interface de révision interactive avec système question/réponse",
+            "Filtrage avancé et recherche de flashcards"
+        ]
     }
 ];
 
